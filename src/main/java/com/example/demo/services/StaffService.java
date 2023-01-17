@@ -15,50 +15,49 @@ import java.util.Optional;
 
 @Service
 public class StaffService {
-    private final StaffRepository staffRepository;
-    private final PositionRepository positionRepository;
+  private final StaffRepository staffRepository;
+  private final PositionRepository positionRepository;
 
-    public StaffService (final StaffRepository staffRepository, final PositionRepository positionRepository){
-        this.staffRepository=staffRepository;
-        this.positionRepository=positionRepository;
-    }
+  public StaffService(final StaffRepository staffRepository, final PositionRepository positionRepository) {
+    this.staffRepository = staffRepository;
+    this.positionRepository = positionRepository;
+  }
 
-    public List<Staff> getAllStaff(){
-        return staffRepository.findAll();
-    }
+  public List<Staff> getAllStaff() {
+    return staffRepository.findAll();
+  }
 
-    public Staff createEmployee(StaffCreateRequest request) throws ObjectNotFound{
-        Staff staff = new Staff();
-        staff.setFirstname(request.getFirstname());
-        staff.setLastname(request.getLastname());
-        Optional<Position> position = positionRepository.findById(request.getPosition_id());
-        if (position.isPresent()) {
-            staff.setPosition(position.get());
-            return staffRepository.save(staff);
-        }
-        else
-            throw new ObjectNotFound("Staff not found");
-    }
+  public Staff createEmployee(StaffCreateRequest request) throws ObjectNotFound {
+    Staff staff = new Staff();
+    staff.setFirstname(request.getFirstname());
+    staff.setLastname(request.getLastname());
+    Optional<Position> position = positionRepository.findById(request.getPosition_id());
+    if (position.isPresent()) {
+      staff.setPosition(position.get());
+      return staffRepository.save(staff);
+    } else
+      throw new ObjectNotFound("Staff not found");
+  }
 
-    public Staff updateStaff(final StaffEditRequest request) throws ObjectNotFound{
-        Optional<Staff> optionalStaff = staffRepository.findById(request.getId());
-        if (optionalStaff.isPresent()) {
-            Staff staff = optionalStaff.get();
-            staff.setFirstname(request.getFirstname());
-            staff.setLastname(request.getLastname());
+  public Staff updateStaff(final StaffEditRequest request) throws ObjectNotFound {
+    Optional<Staff> optionalStaff = staffRepository.findById(request.getId());
+    if (optionalStaff.isPresent()) {
+      Staff staff = optionalStaff.get();
+      staff.setFirstname(request.getFirstname());
+      staff.setLastname(request.getLastname());
 
-            Optional<Position> position = positionRepository.findById(request.getPosition_id());
-            if (position.isPresent()) {
-                staff.setPosition(position.get());
-                return staffRepository.save(staff);
-            }
-            else
-                throw new ObjectNotFound("Staff not found");
-        } else
-            throw new ObjectNotFound("User not found");
-    }
-    public Boolean deleteStaff(Integer id) {
-        staffRepository.deleteById(id);
-        return true;
-    }
+      Optional<Position> position = positionRepository.findById(request.getPosition_id());
+      if (position.isPresent()) {
+        staff.setPosition(position.get());
+        return staffRepository.save(staff);
+      } else
+        throw new ObjectNotFound("Staff not found");
+    } else
+      throw new ObjectNotFound("User not found");
+  }
+
+  public Boolean deleteStaff(Integer id) {
+    staffRepository.deleteById(id);
+    return true;
+  }
 }

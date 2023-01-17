@@ -1,0 +1,42 @@
+#spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+#spring.jpa.hibernate.ddl-auto=update
+#spring.jpa.generate-ddl=true
+#spring.jpa.show-sql=true
+#
+#spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
+##spring.datasource.username=postgres
+##spring.datasource.password=pass_library
+#spring.datasource.driver-class-name=org.postgresql.Driver
+#spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
+
+server:
+  port: 8081
+
+spring:
+  application:
+    schema: app
+  jpa:
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+    properties:
+      hibernate:
+        default_schema: ${spring.application.schema}
+        jdbc:
+          lob:
+            non_contextual_creation: true
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    host: localhost:5432
+    database: test
+    url: jdbc:postgresql://${spring.datasource.host}/${spring.datasource.database}
+    username: username
+    password: password
+
+  flyway:
+    enabled: true
+    user: username
+    password: password
+    schemas: ${spring.application.schema}

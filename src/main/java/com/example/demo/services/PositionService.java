@@ -8,11 +8,13 @@ import java.util.List;
 
 @Service
 public class PositionService {
-    private final PositionRepository repository;
+  private final PositionRepository repository;
 
-    public PositionService(PositionRepository repository) {
-        this.repository = repository;
-    }
+  public PositionService(PositionRepository repository) {
+    this.repository = repository;
+  }
 
-    public List<Position> getAllPosition(){return repository.findAll();}
+  public List<Position> getAllPosition() {
+    return repository.findAll();
+  }
 }

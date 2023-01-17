@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ProducerRepository extends JpaRepository<Producer,Integer> {
-    @Query("select a from producer a where a.id in :ids")
-    List<Producer> findById(@Param("id") final List<Integer> ids);
+public interface ProducerRepository extends JpaRepository<Producer, Integer> {
+  @Query("select a from Producer a where a.id in :ids")
+  List<Producer> findById(@Param("id") final List<Integer> ids);
 
 }

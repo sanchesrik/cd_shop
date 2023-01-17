@@ -9,11 +9,12 @@ import javax.persistence.*;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "positions")
+@Table(name = "position")
 public class Position {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     @NonNull
     @Column(unique = true, nullable = false)
     private String name;

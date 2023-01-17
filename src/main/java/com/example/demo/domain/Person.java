@@ -7,15 +7,15 @@ import javax.persistence.*;
 @Data
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "persons")
-
+@Table(name = "person")
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(unique = true, nullable = false)
-    private String Firstname;
-    @Column(unique = true, nullable = false)
-    private String Lastname;
 
+    @Column(unique = true, nullable = false)
+    private String firstname;
+
+    @Column(unique = true, nullable = false)
+    private String lastname;
 }

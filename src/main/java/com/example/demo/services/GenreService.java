@@ -8,12 +8,13 @@ import java.util.List;
 
 @Service
 public class GenreService {
-    private final GenreRepository repository;
+  private final GenreRepository repository;
 
-    public GenreService(GenreRepository repository) {
-        this.repository = repository;
-    }
-    public List<Genre> getAllGenre(){
-        return repository.findAll();
-    }
+  public GenreService(GenreRepository repository) {
+    this.repository = repository;
+  }
+
+  public List<Genre> getAllGenre() {
+    return repository.findAll();
+  }
 }

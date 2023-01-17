@@ -9,7 +9,6 @@ import javax.persistence.Table;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "users")
-public class Users extends Person{
-
+@Table(name = "user")
+public class User extends Person {
 }

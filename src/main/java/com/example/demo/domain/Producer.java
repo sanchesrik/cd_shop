@@ -9,9 +9,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "producer")
 public class Producer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-    @Column(unique = true, nullable = false)
-    private String fullname;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Integer id;
+
+  @Column(unique = true, nullable = false)
+  private String fullname;
 }

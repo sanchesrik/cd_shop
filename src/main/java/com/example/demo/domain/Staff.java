@@ -12,9 +12,8 @@ import javax.persistence.Table;
 @Entity
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "staff")
-
-public class Staff extends Person{
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "position_id")
-    private Position position;
+public class Staff extends Person {
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "position_id")
+  private Position position;
 }
